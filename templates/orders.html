@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyurtmalar - Clothing Company</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style> body { font-family: 'Inter', sans-serif; } </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <nav class="bg-gradient-to-r from-slate-800 to-slate-900 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-shirt text-blue-400 text-2xl"></i>
+                <span class="text-white font-bold text-xl">Clothing Company</span>
+            </div>
+            <div class="flex gap-6">
+                <a href="/" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-2"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
+                <a href="/products" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-2"><i class="fa-solid fa-box"></i> Mahsulotlar</a>
+                <a href="/orders" class="text-white font-medium transition flex items-center gap-2"><i class="fa-solid fa-cart-shopping"></i> Buyurtmalar</a>
+                <a href="/customers" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-2"><i class="fa-solid fa-users"></i> Mijozlar</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bg-gradient-to-r from-slate-800 to-blue-900 text-white py-10 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-3xl font-bold flex items-center gap-3">
+                <i class="fa-solid fa-cart-shopping"></i> Buyurtmalar (WMS)
+            </h1>
+            <p class="text-slate-300 mt-1">Buyurtmalar holati va boshqaruvi</p>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-8">
+        <!-- Form -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+            <h3 class="font-semibold text-gray-800 text-lg mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-plus text-green-500"></i> Yangi buyurtma qo'shish
+            </h3>
+            <form action="/orders/add" method="post">
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <input type="text" name="customer" placeholder="Mijoz ismi" required
+                        class="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    <input type="text" name="product" placeholder="Mahsulot nomi" required
+                        class="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    <input type="number" name="quantity" placeholder="Miqdor" required
+                        class="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    <select name="status" required
+                        class="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        <option value="">Holat</option>
+                        <option value="Kutilmoqda">Kutilmoqda</option>
+                        <option value="Jarayonda">Jarayonda</option>
+                        <option value="Yetkazildi">Yetkazildi</option>
+                    </select>
+                    <button type="submit"
+                        class="bg-green-500 hover:bg-green-600 text-white font-medium px-6 py-3 rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-plus"></i> Qo'shish
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Table -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-gradient-to-r from-slate-700 to-slate-800 text-white">
+                        <th class="px-6 py-4 text-left text-sm font-semibold">#</th>
+                        <th class="px-6 py-4 text-left text-sm font-semibold"><i class="fa-solid fa-user mr-2"></i>Mijoz</th>
+                        <th class="px-6 py-4 text-left text-sm font-semibold"><i class="fa-solid fa-box mr-2"></i>Mahsulot</th>
+                        <th class="px-6 py-4 text-left text-sm font-semibold"><i class="fa-solid fa-hashtag mr-2"></i>Miqdor</th>
+                        <th class="px-6 py-4 text-left text-sm font-semibold"><i class="fa-solid fa-circle-dot mr-2"></i>Holat</th>
+                        <th class="px-6 py-4 text-left text-sm font-semibold">Amal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 text-gray-500 text-sm">{{ order.id }}</td>
+                        <td class="px-6 py-4 font-medium text-gray-800">{{ order.customer }}</td>
+                        <td class="px-6 py-4 text-gray-700">{{ order.product }}</td>
+                        <td class="px-6 py-4 text-gray-700">{{ order.quantity }} dona</td>
+                        <td class="px-6 py-4">
+                            {% if order.status == 'Yetkazildi' %}
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium"><i class="fa-solid fa-check mr-1"></i>{{ order.status }}</span>
+                            {% elif order.status == 'Jarayonda' %}
+                            <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-medium"><i class="fa-solid fa-spinner mr-1"></i>{{ order.status }}</span>
+                            {% else %}
+                            <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-medium"><i class="fa-solid fa-clock mr-1"></i>{{ order.status }}</span>
+                            {% endif %}
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="/orders/delete/{{ order.id }}"
+                                class="bg-red-50 hover:bg-red-100 text-red-600 px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 w-fit">
+                                <i class="fa-solid fa-trash"></i> O'chirish
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer class="text-center py-6 text-gray-400 text-sm mt-8 border-t border-gray-100">
+        <i class="fa-solid fa-copyright"></i> 2026 Clothing Company | Azure Cloud Platform | West Europe
+    </footer>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Company - Boshqaruv Paneli</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style> body { font-family: 'Inter', sans-serif; } </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="bg-gradient-to-r from-slate-800 to-slate-900 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-shirt text-blue-400 text-2xl"></i>
+                <span class="text-white font-bold text-xl">Clothing Company</span>
+            </div>
+            <div class="flex gap-6">
+                <a href="/" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-2">
+                    <i class="fa-solid fa-house"></i> Bosh sahifa
+                </a>
+                <a href="/products" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-2">
+                    <i class="fa-solid fa-box"></i> Mahsulotlar
+                </a>
+                <a href="/orders" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping"></i> Buyurtmalar
+                </a>
+                <a href="/customers" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-2">
+                    <i class="fa-solid fa-users"></i> Mijozlar
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="bg-gradient-to-r from-slate-800 to-blue-900 text-white py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-3xl font-bold mb-2 flex items-center gap-3">
+                <i class="fa-solid fa-gauge-high"></i> Boshqaruv Paneli
+            </h1>
+            <p class="text-slate-300">ERP, CRM va WMS tizimlarini boshqarish platformasi</p>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-8">
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex items-center gap-4">
+                <div class="bg-blue-100 p-4 rounded-xl">
+                    <i class="fa-solid fa-box-open text-blue-600 text-2xl"></i>
+                </div>
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Jami Mahsulotlar</p>
+                    <p class="text-3xl font-bold text-gray-800">{{ total_products }}</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex items-center gap-4">
+                <div class="bg-green-100 p-4 rounded-xl">
+                    <i class="fa-solid fa-cart-shopping text-green-600 text-2xl"></i>
+                </div>
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Jami Buyurtmalar</p>
+                    <p class="text-3xl font-bold text-gray-800">{{ total_orders }}</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex items-center gap-4">
+                <div class="bg-purple-100 p-4 rounded-xl">
+                    <i class="fa-solid fa-users text-purple-600 text-2xl"></i>
+                </div>
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Jami Mijozlar</p>
+                    <p class="text-3xl font-bold text-gray-800">{{ total_customers }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                <h3 class="font-semibold text-gray-800 text-lg mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-circle-check text-green-500"></i> Tizim holati
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center py-2 border-b border-gray-50">
+                        <span class="text-gray-500 flex items-center gap-2"><i class="fa-solid fa-server text-gray-400"></i> Server holati</span>
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium"><i class="fa-solid fa-check"></i> Ishlayapti</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-gray-50">
+                        <span class="text-gray-500 flex items-center gap-2"><i class="fa-brands fa-microsoft text-blue-400"></i> Platform</span>
+                        <span class="text-gray-700 font-medium">Azure VM — West Europe</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-gray-50">
+                        <span class="text-gray-500 flex items-center gap-2"><i class="fa-solid fa-network-wired text-gray-400"></i> Tarmoq</span>
+                        <span class="text-gray-700 font-medium">clothing-company-vnet</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2">
+                        <span class="text-gray-500 flex items-center gap-2"><i class="fa-solid fa-globe text-gray-400"></i> IP manzil</span>
+                        <span class="text-gray-700 font-medium">20.101.108.117</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                <h3 class="font-semibold text-gray-800 text-lg mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-circle-info text-blue-500"></i> Tizim haqida
+                </h3>
+                <p class="text-gray-600 leading-relaxed">Ushbu tizim kiyim-kechak ulgurji kompaniyasining ERP, CRM va WMS tizimlarini boshqarish uchun mo'ljallangan bulutli platforma hisoblanadi. Microsoft Azure infratuzilmasida joylashtirilgan.</p>
+                <div class="mt-4 flex gap-2 flex-wrap">
+                    <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium"><i class="fa-solid fa-bolt"></i> FastAPI</span>
+                    <span class="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm font-medium"><i class="fa-solid fa-database"></i> SQLite</span>
+                    <span class="bg-purple-50 text-purple-700 px-3 py-1 rounded-full text-sm font-medium"><i class="fa-brands fa-microsoft"></i> Azure VM</span>
+                    <span class="bg-orange-50 text-orange-700 px-3 py-1 rounded-full text-sm font-medium"><i class="fa-solid fa-shield"></i> Nginx</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-6 text-gray-400 text-sm mt-8 border-t border-gray-100">
+        <i class="fa-solid fa-copyright"></i> 2026 Clothing Company | Azure Cloud Platform | West Europe
+    </footer>
+</body>
+</html>
