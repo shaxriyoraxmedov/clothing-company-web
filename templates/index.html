@@ -13,63 +13,67 @@
 
     <!-- Navbar -->
     <nav class="bg-gradient-to-r from-slate-800 to-slate-900 shadow-lg">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <i class="fa-solid fa-shirt text-blue-400 text-2xl"></i>
-                <span class="text-white font-bold text-xl">Clothing Company</span>
+                <i class="fa-solid fa-shirt text-blue-400 text-xl"></i>
+                <span class="text-white font-bold text-lg">Clothing Company</span>
             </div>
-            <div class="flex gap-6">
-                <a href="/" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-2">
-                    <i class="fa-solid fa-house"></i> Bosh sahifa
-                </a>
-                <a href="/products" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-2">
-                    <i class="fa-solid fa-box"></i> Mahsulotlar
-                </a>
-                <a href="/orders" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-2">
-                    <i class="fa-solid fa-cart-shopping"></i> Buyurtmalar
-                </a>
-                <a href="/customers" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-2">
-                    <i class="fa-solid fa-users"></i> Mijozlar
-                </a>
+            <!-- Desktop menu -->
+            <div class="hidden md:flex gap-6">
+                <a href="/" class="text-white font-medium flex items-center gap-2"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
+                <a href="/products" class="text-slate-300 hover:text-white font-medium flex items-center gap-2"><i class="fa-solid fa-box"></i> Mahsulotlar</a>
+                <a href="/orders" class="text-slate-300 hover:text-white font-medium flex items-center gap-2"><i class="fa-solid fa-cart-shopping"></i> Buyurtmalar</a>
+                <a href="/customers" class="text-slate-300 hover:text-white font-medium flex items-center gap-2"><i class="fa-solid fa-users"></i> Mijozlar</a>
             </div>
+            <!-- Hamburger -->
+            <button onclick="toggleMenu()" class="md:hidden text-white text-2xl">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-800 px-4 pb-4">
+            <a href="/" class="block text-white py-2 flex items-center gap-2"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
+            <a href="/products" class="block text-slate-300 py-2 flex items-center gap-2"><i class="fa-solid fa-box"></i> Mahsulotlar</a>
+            <a href="/orders" class="block text-slate-300 py-2 flex items-center gap-2"><i class="fa-solid fa-cart-shopping"></i> Buyurtmalar</a>
+            <a href="/customers" class="block text-slate-300 py-2 flex items-center gap-2"><i class="fa-solid fa-users"></i> Mijozlar</a>
         </div>
     </nav>
 
     <!-- Hero -->
-    <div class="bg-gradient-to-r from-slate-800 to-blue-900 text-white py-12 px-6">
+    <div class="bg-gradient-to-r from-slate-800 to-blue-900 text-white py-8 px-4">
         <div class="max-w-7xl mx-auto">
-            <h1 class="text-3xl font-bold mb-2 flex items-center gap-3">
+            <h1 class="text-2xl md:text-3xl font-bold flex items-center gap-3">
                 <i class="fa-solid fa-gauge-high"></i> Boshqaruv Paneli
             </h1>
-            <p class="text-slate-300">ERP, CRM va WMS tizimlarini boshqarish platformasi</p>
+            <p class="text-slate-300 mt-1 text-sm md:text-base">ERP, CRM va WMS tizimlarini boshqarish platformasi</p>
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-6 py-8">
+    <div class="max-w-7xl mx-auto px-4 py-6">
 
         <!-- Stats Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex items-center gap-4">
-                <div class="bg-blue-100 p-4 rounded-xl">
-                    <i class="fa-solid fa-box-open text-blue-600 text-2xl"></i>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex items-center gap-4">
+                <div class="bg-blue-100 p-3 rounded-xl">
+                    <i class="fa-solid fa-box-open text-blue-600 text-xl"></i>
                 </div>
                 <div>
                     <p class="text-gray-500 text-sm font-medium">Jami Mahsulotlar</p>
                     <p class="text-3xl font-bold text-gray-800">{{ total_products }}</p>
                 </div>
             </div>
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex items-center gap-4">
-                <div class="bg-green-100 p-4 rounded-xl">
-                    <i class="fa-solid fa-cart-shopping text-green-600 text-2xl"></i>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex items-center gap-4">
+                <div class="bg-green-100 p-3 rounded-xl">
+                    <i class="fa-solid fa-cart-shopping text-green-600 text-xl"></i>
                 </div>
                 <div>
                     <p class="text-gray-500 text-sm font-medium">Jami Buyurtmalar</p>
                     <p class="text-3xl font-bold text-gray-800">{{ total_orders }}</p>
                 </div>
             </div>
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex items-center gap-4">
-                <div class="bg-purple-100 p-4 rounded-xl">
-                    <i class="fa-solid fa-users text-purple-600 text-2xl"></i>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex items-center gap-4">
+                <div class="bg-purple-100 p-3 rounded-xl">
+                    <i class="fa-solid fa-users text-purple-600 text-xl"></i>
                 </div>
                 <div>
                     <p class="text-gray-500 text-sm font-medium">Jami Mijozlar</p>
@@ -79,47 +83,57 @@
         </div>
 
         <!-- Info Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
                 <h3 class="font-semibold text-gray-800 text-lg mb-4 flex items-center gap-2">
                     <i class="fa-solid fa-circle-check text-green-500"></i> Tizim holati
                 </h3>
                 <div class="space-y-3">
                     <div class="flex justify-between items-center py-2 border-b border-gray-50">
-                        <span class="text-gray-500 flex items-center gap-2"><i class="fa-solid fa-server text-gray-400"></i> Server holati</span>
-                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium"><i class="fa-solid fa-check"></i> Ishlayapti</span>
+                        <span class="text-gray-500 text-sm flex items-center gap-2"><i class="fa-solid fa-server text-gray-400"></i> Server</span>
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium"><i class="fa-solid fa-check"></i> Ishlayapti</span>
                     </div>
                     <div class="flex justify-between items-center py-2 border-b border-gray-50">
-                        <span class="text-gray-500 flex items-center gap-2"><i class="fa-brands fa-microsoft text-blue-400"></i> Platform</span>
-                        <span class="text-gray-700 font-medium">Azure VM — West Europe</span>
+                        <span class="text-gray-500 text-sm flex items-center gap-2"><i class="fa-brands fa-microsoft text-blue-400"></i> Platform</span>
+                        <span class="text-gray-700 text-sm font-medium">Azure VM</span>
                     </div>
                     <div class="flex justify-between items-center py-2 border-b border-gray-50">
-                        <span class="text-gray-500 flex items-center gap-2"><i class="fa-solid fa-network-wired text-gray-400"></i> Tarmoq</span>
-                        <span class="text-gray-700 font-medium">clothing-company-vnet</span>
+                        <span class="text-gray-500 text-sm flex items-center gap-2"><i class="fa-solid fa-network-wired text-gray-400"></i> Tarmoq</span>
+                        <span class="text-gray-700 text-sm font-medium">clothing-vnet</span>
                     </div>
                     <div class="flex justify-between items-center py-2">
-                        <span class="text-gray-500 flex items-center gap-2"><i class="fa-solid fa-globe text-gray-400"></i> IP manzil</span>
-                        <span class="text-gray-700 font-medium">20.101.108.117</span>
+                        <span class="text-gray-500 text-sm flex items-center gap-2"><i class="fa-solid fa-globe text-gray-400"></i> IP</span>
+                        <span class="text-gray-700 text-sm font-medium">20.101.108.117</span>
                     </div>
                 </div>
             </div>
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
                 <h3 class="font-semibold text-gray-800 text-lg mb-4 flex items-center gap-2">
                     <i class="fa-solid fa-circle-info text-blue-500"></i> Tizim haqida
                 </h3>
-                <p class="text-gray-600 leading-relaxed">Ushbu tizim kiyim-kechak ulgurji kompaniyasining ERP, CRM va WMS tizimlarini boshqarish uchun mo'ljallangan bulutli platforma hisoblanadi. Microsoft Azure infratuzilmasida joylashtirilgan.</p>
+                <p class="text-gray-600 text-sm leading-relaxed">Kiyim-kechak ulgurji kompaniyasining ERP, CRM va WMS tizimlarini boshqarish uchun mo'ljallangan bulutli platforma. Microsoft Azure infratuzilmasida joylashtirilgan.</p>
                 <div class="mt-4 flex gap-2 flex-wrap">
-                    <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium"><i class="fa-solid fa-bolt"></i> FastAPI</span>
-                    <span class="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm font-medium"><i class="fa-solid fa-database"></i> SQLite</span>
-                    <span class="bg-purple-50 text-purple-700 px-3 py-1 rounded-full text-sm font-medium"><i class="fa-brands fa-microsoft"></i> Azure VM</span>
-                    <span class="bg-orange-50 text-orange-700 px-3 py-1 rounded-full text-sm font-medium"><i class="fa-solid fa-shield"></i> Nginx</span>
+                    <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-medium"><i class="fa-solid fa-bolt"></i> FastAPI</span>
+                    <span class="bg-green-50 text-green-700 px-3 py-1 rounded-full text-xs font-medium"><i class="fa-solid fa-database"></i> SQLite</span>
+                    <span class="bg-purple-50 text-purple-700 px-3 py-1 rounded-full text-xs font-medium"><i class="fa-brands fa-microsoft"></i> Azure VM</span>
+                    <span class="bg-orange-50 text-orange-700 px-3 py-1 rounded-full text-xs font-medium"><i class="fa-solid fa-shield"></i> Nginx</span>
                 </div>
             </div>
         </div>
     </div>
 
     <footer class="text-center py-6 text-gray-400 text-sm mt-8 border-t border-gray-100">
-        <i class="fa-solid fa-copyright"></i> 2026 Clothing Company | Azure Cloud Platform | West Europe
+        <i class="fa-solid fa-copyright"></i> 2026 Clothing Company | Azure Cloud Platform
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-x');
+        }
+    </script>
 </body>
 </html>

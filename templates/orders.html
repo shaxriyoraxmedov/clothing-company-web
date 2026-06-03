@@ -11,101 +11,120 @@
 </head>
 <body class="bg-gray-50 min-h-screen">
     <nav class="bg-gradient-to-r from-slate-800 to-slate-900 shadow-lg">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <i class="fa-solid fa-shirt text-blue-400 text-2xl"></i>
-                <span class="text-white font-bold text-xl">Clothing Company</span>
+                <i class="fa-solid fa-shirt text-blue-400 text-xl"></i>
+                <span class="text-white font-bold text-lg">Clothing Company</span>
             </div>
-            <div class="flex gap-6">
-                <a href="/" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-2"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
-                <a href="/products" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-2"><i class="fa-solid fa-box"></i> Mahsulotlar</a>
-                <a href="/orders" class="text-white font-medium transition flex items-center gap-2"><i class="fa-solid fa-cart-shopping"></i> Buyurtmalar</a>
-                <a href="/customers" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-2"><i class="fa-solid fa-users"></i> Mijozlar</a>
+            <div class="hidden md:flex gap-6">
+                <a href="/" class="text-slate-300 hover:text-white font-medium flex items-center gap-2"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
+                <a href="/products" class="text-slate-300 hover:text-white font-medium flex items-center gap-2"><i class="fa-solid fa-box"></i> Mahsulotlar</a>
+                <a href="/orders" class="text-white font-medium flex items-center gap-2"><i class="fa-solid fa-cart-shopping"></i> Buyurtmalar</a>
+                <a href="/customers" class="text-slate-300 hover:text-white font-medium flex items-center gap-2"><i class="fa-solid fa-users"></i> Mijozlar</a>
             </div>
+            <button onclick="toggleMenu()" class="md:hidden text-white text-2xl">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-800 px-4 pb-4">
+            <a href="/" class="block text-slate-300 py-2 flex items-center gap-2"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
+            <a href="/products" class="block text-slate-300 py-2 flex items-center gap-2"><i class="fa-solid fa-box"></i> Mahsulotlar</a>
+            <a href="/orders" class="block text-white py-2 flex items-center gap-2"><i class="fa-solid fa-cart-shopping"></i> Buyurtmalar</a>
+            <a href="/customers" class="block text-slate-300 py-2 flex items-center gap-2"><i class="fa-solid fa-users"></i> Mijozlar</a>
         </div>
     </nav>
 
-    <div class="bg-gradient-to-r from-slate-800 to-blue-900 text-white py-10 px-6">
+    <div class="bg-gradient-to-r from-slate-800 to-blue-900 text-white py-8 px-4">
         <div class="max-w-7xl mx-auto">
-            <h1 class="text-3xl font-bold flex items-center gap-3">
+            <h1 class="text-2xl md:text-3xl font-bold flex items-center gap-3">
                 <i class="fa-solid fa-cart-shopping"></i> Buyurtmalar (WMS)
             </h1>
-            <p class="text-slate-300 mt-1">Buyurtmalar holati va boshqaruvi</p>
+            <p class="text-slate-300 mt-1 text-sm">Buyurtmalar holati va boshqaruvi</p>
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-6 py-8">
+    <div class="max-w-7xl mx-auto px-4 py-6">
         <!-- Form -->
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-6">
             <h3 class="font-semibold text-gray-800 text-lg mb-4 flex items-center gap-2">
                 <i class="fa-solid fa-plus text-green-500"></i> Yangi buyurtma qo'shish
             </h3>
             <form action="/orders/add" method="post">
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
                     <input type="text" name="customer" placeholder="Mijoz ismi" required
-                        class="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        class="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 w-full">
                     <input type="text" name="product" placeholder="Mahsulot nomi" required
-                        class="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        class="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 w-full">
                     <input type="number" name="quantity" placeholder="Miqdor" required
-                        class="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        class="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 w-full">
                     <select name="status" required
-                        class="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        class="border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 w-full">
                         <option value="">Holat</option>
                         <option value="Kutilmoqda">Kutilmoqda</option>
                         <option value="Jarayonda">Jarayonda</option>
                         <option value="Yetkazildi">Yetkazildi</option>
                     </select>
                     <button type="submit"
-                        class="bg-green-500 hover:bg-green-600 text-white font-medium px-6 py-3 rounded-xl transition flex items-center justify-center gap-2">
+                        class="bg-green-500 hover:bg-green-600 text-white font-medium px-6 py-3 rounded-xl transition flex items-center justify-center gap-2 w-full">
                         <i class="fa-solid fa-plus"></i> Qo'shish
                     </button>
                 </div>
             </form>
         </div>
 
-        <!-- Table -->
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-            <table class="w-full">
-                <thead>
-                    <tr class="bg-gradient-to-r from-slate-700 to-slate-800 text-white">
-                        <th class="px-6 py-4 text-left text-sm font-semibold">#</th>
-                        <th class="px-6 py-4 text-left text-sm font-semibold"><i class="fa-solid fa-user mr-2"></i>Mijoz</th>
-                        <th class="px-6 py-4 text-left text-sm font-semibold"><i class="fa-solid fa-box mr-2"></i>Mahsulot</th>
-                        <th class="px-6 py-4 text-left text-sm font-semibold"><i class="fa-solid fa-hashtag mr-2"></i>Miqdor</th>
-                        <th class="px-6 py-4 text-left text-sm font-semibold"><i class="fa-solid fa-circle-dot mr-2"></i>Holat</th>
-                        <th class="px-6 py-4 text-left text-sm font-semibold">Amal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for order in orders %}
-                    <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
-                        <td class="px-6 py-4 text-gray-500 text-sm">{{ order.id }}</td>
-                        <td class="px-6 py-4 font-medium text-gray-800">{{ order.customer }}</td>
-                        <td class="px-6 py-4 text-gray-700">{{ order.product }}</td>
-                        <td class="px-6 py-4 text-gray-700">{{ order.quantity }} dona</td>
-                        <td class="px-6 py-4">
-                            {% if order.status == 'Yetkazildi' %}
-                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium"><i class="fa-solid fa-check mr-1"></i>{{ order.status }}</span>
-                            {% elif order.status == 'Jarayonda' %}
-                            <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-medium"><i class="fa-solid fa-spinner mr-1"></i>{{ order.status }}</span>
-                            {% else %}
-                            <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-medium"><i class="fa-solid fa-clock mr-1"></i>{{ order.status }}</span>
-                            {% endif %}
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="/orders/delete/{{ order.id }}"
-                                class="bg-red-50 hover:bg-red-100 text-red-600 px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 w-fit">
-                                <i class="fa-solid fa-trash"></i> O'chirish
-                            </a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <div class="overflow-x-auto">
+                <table class="w-full min-w-[600px]">
+                    <thead>
+                        <tr class="bg-gradient-to-r from-slate-700 to-slate-800 text-white">
+                            <th class="px-4 py-4 text-left text-sm font-semibold">#</th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold"><i class="fa-solid fa-user mr-1"></i>Mijoz</th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold"><i class="fa-solid fa-box mr-1"></i>Mahsulot</th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold"><i class="fa-solid fa-hashtag mr-1"></i>Miqdor</th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold"><i class="fa-solid fa-circle-dot mr-1"></i>Holat</th>
+                            <th class="px-4 py-4 text-left text-sm font-semibold">Amal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
+                            <td class="px-4 py-3 text-gray-500 text-sm">{{ order.id }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-800 text-sm">{{ order.customer }}</td>
+                            <td class="px-4 py-3 text-gray-700 text-sm">{{ order.product }}</td>
+                            <td class="px-4 py-3 text-gray-700 text-sm">{{ order.quantity }} dona</td>
+                            <td class="px-4 py-3">
+                                {% if order.status == 'Yetkazildi' %}
+                                <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-medium"><i class="fa-solid fa-check mr-1"></i>{{ order.status }}</span>
+                                {% elif order.status == 'Jarayonda' %}
+                                <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs font-medium"><i class="fa-solid fa-spinner mr-1"></i>{{ order.status }}</span>
+                                {% else %}
+                                <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs font-medium"><i class="fa-solid fa-clock mr-1"></i>{{ order.status }}</span>
+                                {% endif %}
+                            </td>
+                            <td class="px-4 py-3">
+                                <a href="/orders/delete/{{ order.id }}"
+                                    class="bg-red-50 hover:bg-red-100 text-red-600 px-3 py-2 rounded-lg text-xs font-medium transition flex items-center gap-1 w-fit">
+                                    <i class="fa-solid fa-trash"></i> O'chirish
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <footer class="text-center py-6 text-gray-400 text-sm mt-8 border-t border-gray-100">
-        <i class="fa-solid fa-copyright"></i> 2026 Clothing Company | Azure Cloud Platform | West Europe
+        <i class="fa-solid fa-copyright"></i> 2026 Clothing Company | Azure Cloud Platform
     </footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-x');
+        }
+    </script>
 </body>
 </html>
